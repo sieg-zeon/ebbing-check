@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "nextjsFunc"
+      }
+    ]
+  },
+  "functions": {
+    "source": ".",
+    "predeploy": [
+      "bun --prefix \"$PROJECT_DIR\" install",
+      "bun --prefix \"$PROJECT_DIR\" build"
+    ],
+    "runtime": "nodejs18"
+  }
+}
